@@ -7,11 +7,6 @@ from selenium.webdriver.chrome.options import Options
 from demo_qa.utils import attach
 from dotenv import load_dotenv
 
-
-
-
-
-
 DEFAULT_BROWSER_VERSION = '100.0'
 
 
@@ -32,11 +27,8 @@ def setup_browser(request):
     options.add_argument("window-size=2560,1440")
     browser.config.base_url = "https://demoqa.com"
 
-    browser_version = request.config.getoption("--browser_version")
-    browser_url = request.config.getoption("--browser_url")
-    browser_version = (
-        browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
-    )
+    browser_version = request.config.getoption('--browser_version')
+    browser_version = browser_version if browser_version != '' else DEFAULT_BROWSER_VERSION
 
     selenoid_capabilities = {
         "browserName": "chrome",
@@ -49,7 +41,7 @@ def setup_browser(request):
     password = os.getenv("PASSWORD")
 
     driver = webdriver.Remote(
-        command_executor=f"https://{login}:{password}@{browser_url}",
+        command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
         options=options,
     )
 

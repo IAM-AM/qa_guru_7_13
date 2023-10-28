@@ -1,8 +1,7 @@
 from selene import browser, command, have
 import allure
 from demo_qa.data.users import User
-from demo_qa.tests import resources
-import os
+from demo_qa.tests.resources import resource_path
 
 
 class RegistrationForm:
@@ -67,19 +66,6 @@ class RegistrationForm:
     def upload_picture(self, picture_path):
         browser.element('#uploadPicture').set_value(resource_path(picture_path))
         return self
-
-    # def upload_picture(self, image):
-    #     browser.element("#uploadPicture").set_value(
-    #         os.path.abspath(
-    #             os.path.join(os.path.dirname(tests.__file__), f'resources/{image}')
-    #         )
-    #     )
-
-    # @allure.step('Upload picture')
-    # def upload_picture(self, picture):
-    #     browser.element('#uploadPicture').set_value(resource_path(picture))
-    #     browser.element('#uploadPicture').send_keys(os.path.abspath('resources/tests/test_image.png'))
-    #     return self
 
     @allure.step('Fill address')
     def current_address(self, address):

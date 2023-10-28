@@ -40,6 +40,7 @@ def test_successful_registration(setup_browser, test_user):
                                  test_user.date_of_birth_month,
                                  test_user.date_of_birth_year
                                  )
+
     registration_page.subject(test_user.subject)
     registration_page.hobby(test_user.hobby)
     registration_page.upload_picture(test_user.picture)

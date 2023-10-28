@@ -2,3 +2,5 @@ pytest==7.4.2
 allure-pytest==2.13.2
 selene==2.0.0rc4
 selenium==4.14.0
+python-dotenv~=1.0.0
+pathlib~=1.0.1
