@@ -29,9 +29,7 @@ class RegistrationPage:
         return self
 
     def fill_gender(self, gender):
-        browser.all('[name=gender]').element_by(have.value(gender)).element(
-            '..'
-        ).click()
+        browser.all('[name=gender]').element_by(have.value(gender)).element('..').click()
         return self
 
     def fill_phone_number(self, phone_number):
@@ -48,6 +46,7 @@ class RegistrationPage:
         browser.element('.react-datepicker__year-select').all('option').element_by(
             have.exact_text(year)
         ).click()
+
         browser.element(
             f'.react-datepicker__day--0{day}:not(.react-datepicker__day--outside-month)'
         ).click()
