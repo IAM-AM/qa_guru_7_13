@@ -29,7 +29,6 @@ def setup_browser(request):
 
     browser_version = request.config.getoption('--browser_version')
     browser_version = browser_version if browser_version != '' else DEFAULT_BROWSER_VERSION
-    # browser_url = request.config.getoption("--browser_url")
 
     selenoid_capabilities = {
         "browserName": "chrome",
@@ -38,12 +37,12 @@ def setup_browser(request):
     }
     options.capabilities.update(selenoid_capabilities)
 
-    # login = os.getenv("LOGIN")
-    # password = os.getenv("PASSWORD")
+    login = os.getenv("LOGIN")
+    password = os.getenv("PASSWORD")
 
     driver = webdriver.Remote(
-        # command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
-        command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
+        command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
+        # command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
         options=options,
     )
 
